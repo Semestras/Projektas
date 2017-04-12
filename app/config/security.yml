@@ -6,6 +6,12 @@ security:
     providers:
         in_memory:
             memory: ~
+        our_db_provider:
+            entity:
+                class: AppBundle:User
+                property: username
+                            # if you're using multiple entity managers
+                            # manager_name: customer
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -25,3 +31,10 @@ security:
 
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             #form_login: ~
+            pattern:    ^/
+            http_basic: ~
+            provider: our_db_provider
+
+    encoders:
+            AppBundle\Entity\User:
+                algorithm: bcrypt
