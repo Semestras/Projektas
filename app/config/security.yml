@@ -24,6 +24,9 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                always_use_default_target_path: true
+                default_target_path: /home
+
             # activate different ways to authenticate
 
             # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
@@ -31,9 +34,21 @@ security:
 
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             #form_login: ~
-            pattern:    ^/
+            pattern: ^/
             http_basic: ~
             provider: our_db_provider
+            logout:
+                csrf_parameter:       _csrf_token
+                csrf_token_id:        logout
+                path:                 /logout
+                target:               /login
+                success_handler:      ~
+                invalidate_session:   true
+                delete_cookies:
+                    name:
+                        path:                 null
+                        domain:               null
+                handlers:             []
 
     encoders:
             AppBundle\Entity\User:
