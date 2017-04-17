@@ -41,7 +41,11 @@ class Task
      * @ORM\Column(type="integer", length=255, unique=false)
      */
     private $userid;
-    
+
+    /**
+     * @ORM\Column(type="integer", length=255, unique=false)
+     */
+    private $state;
 
 
     /**
@@ -148,5 +152,29 @@ class Task
     public function getUserid()
     {
         return $this->userid;
+    }
+
+    /**
+     * Set state
+     *
+     * @param integer $state
+     *
+     * @return Task
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return integer
+     */
+    public function getState()
+    {
+        return $this->state;
     }
 }

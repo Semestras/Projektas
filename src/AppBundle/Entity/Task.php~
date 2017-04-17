@@ -39,10 +39,13 @@ class Task
 
     /**
      * @ORM\Column(type="integer", length=255, unique=false)
-     * @Assert\NotBlank()
      */
     private $userid;
-    
+
+    /**
+     * @ORM\Column(type="integer", length=255, unique=false)
+     */
+    private $state;
 
 
     /**
@@ -125,5 +128,29 @@ class Task
     public function getDuedate()
     {
         return $this->duedate;
+    }
+
+    /**
+     * Set userid
+     *
+     * @param integer $userid
+     *
+     * @return Task
+     */
+    public function setUserid($userid)
+    {
+        $this->userid = $userid;
+
+        return $this;
+    }
+
+    /**
+     * Get userid
+     *
+     * @return integer
+     */
+    public function getUserid()
+    {
+        return $this->userid;
     }
 }

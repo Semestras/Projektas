@@ -84,7 +84,12 @@
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="24" parent="8" name="PRIMARY">
+    <column id="24" parent="8" name="state">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="25" parent="8" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
