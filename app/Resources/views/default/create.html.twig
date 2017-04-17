@@ -1,14 +1,6 @@
 
-
-<form action="{{ path('create') }}" method="post">
-    <label for="name">Task name:</label>
-    <input type="text" id="name" name="_name" />
-
-    <label for="description">Task description:</label>
-    <input type="text" id="description" name="_description" />
-
-    <label for="duedate">Deadline:</label>
-    <input type="text" id="duedate" name="_duedate" />
-    <button type="submit">Create Task</button>
-    <input type="hidden" name="_target_path" value="/home" />
-</form>
+{{ form(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.duedate) }}
+{{ form_end(form) }}

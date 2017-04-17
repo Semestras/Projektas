@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class CreateTask extends AbstractType
@@ -17,6 +18,8 @@ class CreateTask extends AbstractType
             ->add('name', TextType::class)
             ->add('description', TextType::class)
             ->add('duedate', TextType::class)
+            ->add('save', SubmitType::class)
+
         ;
     }
 

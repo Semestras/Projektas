@@ -39,7 +39,6 @@ class Task
 
     /**
      * @ORM\Column(type="integer", length=255, unique=false)
-     * @Assert\NotBlank()
      */
     private $userid;
     
