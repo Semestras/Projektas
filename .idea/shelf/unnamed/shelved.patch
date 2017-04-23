@@ -1,0 +1,111 @@
+Index: src/AppBundle/Controller/HomeController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\nnamespace AppBundle\\Controller;\n\nuse Symfony\\Component\\HttpFoundation\\Request;\nuse Sensio\\Bundle\\FrameworkExtraBundle\\Configuration\\Route;\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller;\n\nclass HomeController extends Controller\n{\n    /**\n     * @Route(\"/home\", name=\"home\")\n     */\n    public function numberAction()\n    {\n        return $this->render('default/home.html');\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/AppBundle/Controller/HomeController.php	(revision e532d4ec25114cee0208aed6d73563b6180647b8)
++++ src/AppBundle/Controller/HomeController.php	(revision )
+@@ -1,4 +1,5 @@
+ <?php
++//src/AppBundle/Controller/HomeController.php
+ namespace AppBundle\Controller;
+ 
+ use Symfony\Component\HttpFoundation\Request;
+@@ -10,8 +11,41 @@
+     /**
+      * @Route("/home", name="home")
+      */
+-    public function numberAction()
++    public function homeAllTasks() #visada_iskvieciama_funkcija
+     {
+-        return $this->render('default/home.html');
++        /*
++         * norint atrinkti duomenu bazes irasus reikia gauti weba naudojancio userio id
++         * sita eilute gauna prisijungusi asmeni
++         */
++        $user = $this->get('security.token_storage')->getToken()->getUser();
++
++        /*
++         * nesigilinau kam, bet reikalinga eilute, berods gauna viska is duombazes
++         */
++        $em = $this->getDoctrine()->getManager();
++
++        /*
++         * cia atrenkami reikalingi taskai, yra keli budai, cia parasytas naudojant sql komandas
++         * p - naujas objektas, appbundle:task nurodo jo klase, kurios iesko duomenu bazej
++         * where nurodo pagal ka reikia rasti. siuo atveju pagal atskira parametra userid
++         * orderby, isrusiuoja, siuo atveju nebutina
++         * userid gaunamas is prisijungusio asmens panaudojant metoda
++         */
++        $query = $em->createQuery(
++            'SELECT p
++            FROM AppBundle:Task p
++            WHERE p.userid = :userid
++            ORDER BY p.userid ASC'
++        )->setParameter('userid', $user->getId());
++
++        /*
++         * visus gautus rezultatus sudeda i masyva
++         */
++        $tasks = $query->getResult();
++
++        /*
++         * i spausdinimo forma nusiuncia duota masyva kuri isspausdina
++         */
++        return $this->render('default/home.html.twig', array('result' => $tasks));
+     }
+ }
+\ No newline at end of file
+Index: app/Resources/views/default/home.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Resources/views/default/home.html.twig	(revision )
++++ app/Resources/views/default/home.html.twig	(revision )
+@@ -0,0 +1,43 @@
++<link rel="stylesheet" href="{{ asset('css/StickyNotes.css') }}"/>
++<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
++<html>
++<head>
++    <title>This is your homepage</title>
++</head>
++<body>
++<h1>All your available tasks:</h1>
++
++<div class="container bootstrap snippet">
++    <div class="row">
++        <ul class="notes">
++            {% for item in result %}
++                <li>
++                    <div class="rotate-2 red-bg">
++                        <h3>{{ item.name }}</h3>
++                        {{ item.description }}<br>
++                        {{ item.duedate }}<br><br>
++                        <button id="checkAll" class="btn btn-danger"><i class="fa fa-spinner fa-spin"
++                                                                        style="font-size:16px"></i> In progress
++                        </button>
++                        <button id="checkAll" class="btn btn-danger"><i class="fa fa-exclamation"
++                                                                        style="font-size:16px"></i> Late
++                        </button>
++                        <button id="checkAll" class="btn btn-danger"><i class="fa fa-check" style="font-size:16px"></i>
++                            DONE
++                        </button>
++                    </div>
++                </li>
++            {% else %}
++                <h3> It seems you have no active tasks, create one now :)</h3>
++            {% endfor %}
++        </ul>
++    </div>
++</div>
++</body>
++<form action="/create">
++    <input type="submit" value="Create a new task"/>
++</form>
++<form action="/logout">
++    <input type="submit" value="Log me out"/>
++</form>
++</html>

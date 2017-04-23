@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="{{ asset('css/StickyNotes.css') }}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<html>
+<head>
+    <title>This is your homepage</title>
+</head>
+<body>
+<form action="/create">
+    <input type="submit" value="Create a new task"/>
+</form>
+<form action="/logout">
+    <input type="submit" value="Log me out"/>
+</form>
+
+<h1>All your available tasks:</h1>
+
+<div class="container bootstrap snippet">
+    <div class="row">
+        <ul class="notes">
+            {% for item in result %}
+                <li>
+                    <div class="rotate-2 red-bg">
+                        <h3>{{ item.name }}</h3>
+                        {{ item.description }}<br>
+                        {{ item.duedate }}<br><br>
+                        <button id="checkAll" class="btn btn-danger"><i class="fa fa-spinner fa-spin"
+                                                                        style="font-size:16px"></i> In progress
+                        </button>
+                        <button id="checkAll" class="btn btn-danger"><i class="fa fa-exclamation"
+                                                                        style="font-size:16px"></i> Late
+                        </button>
+                        <button id="checkAll" class="btn btn-danger"><i class="fa fa-check" style="font-size:16px"></i>
+                            DONE
+                        </button>
+                    </div>
+                </li>
+            {% else %}
+                <h3> It seems you have no active tasks, create one now :)</h3>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

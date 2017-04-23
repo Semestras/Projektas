@@ -10,8 +10,22 @@ class DoneListController extends Controller
     /**
      * @Route("/DoneList", name="DoneList")
      */
-    public function numberAction()
+    public function tasks()
     {
-        return $this->render('default/DoneList.html.twig');
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery(
+            'SELECT p
+            FROM AppBundle:Task p
+            WHERE p.userid = :userid
+            AND p.state = 2
+            ORDER BY p.userid ASC'
+        )->setParameter('userid', $user->getId());
+
+        $tasks = $query->getResult();
+        return $this->render('default/DoneList.html.twig', array('result' => $tasks));
     }
 }
