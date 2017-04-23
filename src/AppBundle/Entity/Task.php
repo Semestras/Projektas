@@ -32,7 +32,6 @@ class Task
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=false)
      * @Assert\NotBlank()
      */
     private $duedate;

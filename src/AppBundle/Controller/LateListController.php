@@ -11,8 +11,29 @@ class LateListController extends Controller
     /**
      * @Route("/LateList", name="LateList")
      */
-    public function numberAction()
+    public function tasks()
     {
-        return $this->render('default/LateListTask.html.twig');
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery(
+            'SELECT p
+            FROM AppBundle:Task p
+            WHERE p.userid = :userid
+            AND p.state = 1
+            ORDER BY p.userid ASC'
+        )->setParameter('userid', $user->getId());
+
+        /*
+         * visus gautus rezultatus sudeda i masyva
+         */
+        $tasks = $query->getResult();
+
+        /*
+         * i spausdinimo forma nusiuncia duota masyva kuri isspausdina
+         */
+        return $this->render('default/LateListTask.html.twig', array('result' => $tasks));
     }
 }
