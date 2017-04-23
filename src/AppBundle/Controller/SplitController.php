@@ -13,6 +13,6 @@ class SplitController extends Controller
      */
     public function numberAction()
     {
-        return $this->render('default/Skaidymas.html.twig');
+        return $this->render('default/Split.html.twig');
     }
 }
