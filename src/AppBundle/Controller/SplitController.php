@@ -6,13 +6,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class ToDoController extends Controller
+class SplitController extends Controller
 {
     /**
-     * @Route("/ToDoList", name="ToDoList")
+     * @Route("/Split", name="Split")
      */
     public function numberAction()
     {
-        return $this->render('default/ToDoList.html.twig');
+        return $this->render('default/Skaidymas.html.twig');
     }
 }
