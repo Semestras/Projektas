@@ -1,7 +1,12 @@
-<frameset rows="50%, *">
-    <frame name="virsus" src="http://localhost:8000/home">
-    <frameset cols="50%, *">
-        <frame name="kaire" src="http://localhost:8000/DoneList">
-        <frame name="desine" src="http://localhost:8000/LateList">
-    </frameset>
-</frameset>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-6">
+            {% include 'default/home.html.twig' %}
+        </div>
+        <div class="col-xs-6">
+            {% include 'default/LateListTask.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
