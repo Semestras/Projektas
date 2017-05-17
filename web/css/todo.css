@@ -1,0 +1,153 @@
+body {
+    margin-top: 20px;
+    background: url(http://static.oprah.com/images/201302/omag/201302-omag-to-do-list-600x411.jpg);
+}
+
+.box.box-aqua {
+    border-top-color: #00c0ef !important;
+}
+
+.box.box-green {
+    border-top-color: #00a65a !important;
+}
+
+.box.box-success {
+    border-top-color: #3c8dbc;
+}
+
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 650px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    background: #B4E1FF;
+}
+
+.box-header {
+    color: #30499B;
+    display: block;
+    padding: 20px 0px 10px 10px;
+    position: relative;
+}
+
+.box-header > .ion {
+    margin-right: 5px;
+}
+
+.box-header .box-title {
+    display: inline-block;
+    font-size: 25px;
+    margin: 0;
+    line-height: 1;
+}
+
+.box-header > .box-tools {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.inline {
+    display: inline;
+    display: flex;
+}
+
+.box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+}
+
+.todo-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+}
+
+.todo-list > li .descr {
+    padding-top: 10px;
+    display: block;
+}
+
+.todo-list > li .deadln {
+    display: block;
+    padding-top: 20px;
+}
+
+/*.descr{*/
+/*display: inline-block;*/
+/*}*/
+.todo-list > li {
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 2px;
+    border-left: 2px solid #e6e7e8;
+    color: #444;
+    background: rgba(86, 185, 73, 0.3);
+    border-radius: 5px;
+    height: 150px;
+}
+
+.description {
+    display: block;
+    width: 500px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.todo-list > li .label {
+    margin-left: 10px;
+    font-size: 9px;
+}
+
+.todo-list > li .tools {
+    display: none;
+    float: right;
+    color: #dd4b39;
+}
+
+.todo-list > li:hover .tools {
+    display: block;
+}
+
+.no-border {
+    border: 0 !important;
+}
+
+.box-footer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top: 1px solid #f4f4f4;
+    padding: 10px;
+    background-color: #fff;
+    height: 170px;
+}
+
+.btn-default {
+    background-color: #f4f4f4;
+    color: #444;
+    border-color: #ddd;
+}
+
+.textbox {
+    width: 500px;
+    height: 30px;
+}
+
+.btn {
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 2px solid black;
+    margin-top: 2px;
+    height: 25px;
+    margin-right: 10px;
+}
