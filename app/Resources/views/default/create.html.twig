@@ -1,4 +1,14 @@
+<link rel="stylesheet" href="{{ asset('css/todo.css') }}"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 {{ form(form) }}
     {{ form_widget(form)}}
 {{ form_end(form) }}
+
+<div class="box-footer clearfix no-border">
+    <input type="text" class="textbox" placeholder="To do task">
+    <textarea class="description" rows="4" cols="50" placeholder="Description"></textarea>
+    <label for="deadline">Deadline:</label><input id="meeting" type="datetime" value="2017-05-05 12:22"/>
+    <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+
+</div>

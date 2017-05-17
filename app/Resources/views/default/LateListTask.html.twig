@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="{{ asset('css/StickyNotes.css') }}"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ asset('css/todo.css') }}"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <head>
     <title>Late tasks</title>
 </head>
@@ -10,18 +10,19 @@
         <ul class="notes">
             {% for item in result %}
             <li>
-                <div class="rotate-2 red-bg">
-                    <h3>{{ item.name }}</h3>
-                    {{ item.description }}<br>
-                    {{ item.duedate }}<br><br>
+                <span class="text">Name : {{ item.name }}</span><br>
+                <span class="text">Description : {{ item.description }}</span><br>
+                <span class="deadln">Deadline : {{ item.duedate }}</span><br>
 
-                    <button id="checkAll" class="btn btn-danger"><i class="fa fa-check" style="font-size:16px"></i> DONE
-                    </button>
-                </div>
-            </li>
+                <button id="checkAll"><i class="fa fa-check" style="font-size:16px"></i>
+                    DONE
+                </button>
+
+            </li><br>
             {% else %}
                 <h3> Congratulations, you are not late for any tasks :)</h3>
             {% endfor %}
         </ul>
     </div>
 </div>
+

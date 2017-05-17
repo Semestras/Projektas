@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="{{ asset('css/DoneList.css') }}"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ asset('css/todo.css') }}"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <head>
     <title>Completed tasks</title>
 </head>
@@ -9,15 +9,11 @@
     <div class="row">
         <ul class="notes">
             {% for item in result %}
-            <li>
-                <div class="rotate-1 lazur-bg">
-                    <small>2017-04-12 12:03</small>
-                    <h3><i class="fa fa-check"></i>Done</h3>
-                    <h3>{{ item.name }}</h3>
-                    {{ item.description }}<br>
-                    {{ item.duedate }}<br><br>
-                </div>
-            </li>
+                <li>
+                    <span class="text">Name : {{ item.name }}</span><br>
+                    <span class="text">Description : {{ item.description }}</span><br>
+                    <span class="deadln">Deadline : {{ item.duedate }}</span><br>
+                </li><br>
             {% else %}
                 <h3> It seems you have no completed tasks, maybe you should start working now? :)</h3>
             {% endfor %}
