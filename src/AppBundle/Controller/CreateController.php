@@ -20,7 +20,7 @@ class CreateController extends Controller
         $task = new Task();
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $form = $this->createForm(CreateTask::class, $task);
-        $task->setUserid($user->getId());
+        $task->setUserid(0);
         $task->setState(0);
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);

@@ -21,10 +21,10 @@ class LateListController extends Controller
         $query = $em->createQuery(
             'SELECT p
             FROM AppBundle:Task p
-            WHERE p.userid = :userid
+            WHERE p.userid = 0
             AND p.state = 1
             ORDER BY p.userid ASC'
-        )->setParameter('userid', $user->getId());
+        );
 
         /*
          * visus gautus rezultatus sudeda i masyva
