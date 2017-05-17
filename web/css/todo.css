@@ -1,6 +1,6 @@
 body {
     margin-top: 20px;
-    background: url(http://static.oprah.com/images/201302/omag/201302-omag-to-do-list-600x411.jpg);
+    background: url(http://www.no-zaku.com/background/wp-content/uploads/sites/9/2016/11/Nice-Free-Web-Page-Background-Images.jpg);
 }
 
 .box.box-aqua {
@@ -18,16 +18,14 @@ body {
 .box {
     position: relative;
     border-radius: 3px;
-    background: #ffffff;
-    border-top: 3px solid #d2d6de;
     margin-bottom: 20px;
-    width: 650px;
+    width: 550px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    background: #B4E1FF;
+
 }
 
 .box-header {
-    color: #30499B;
+    color: #000000;
     display: block;
     padding: 20px 0px 10px 10px;
     position: relative;
@@ -89,8 +87,7 @@ body {
     margin-bottom: 2px;
     border-left: 2px solid #e6e7e8;
     color: #444;
-    background: rgba(86, 185, 73, 0.3);
-    border-radius: 5px;
+    background: rgba(245, 203, 167, 5);
     height: 150px;
 }
 
