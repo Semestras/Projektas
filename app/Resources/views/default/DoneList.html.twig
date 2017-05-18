@@ -1,39 +1,87 @@
 <link rel="stylesheet" href="{{ asset('css/DoneList.css') }}"/>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+    <title>Done list</title>
+</head>
+
+<body>
+<div class="background-image"></div>
+<form action="/Split" >
+    <input type="submit" class="button" value="Back to home page"/>
+</form>
 <div class="container bootstrap snippet">
     <div class="row">
-        <ul class="notes">
-            <li>
-                <div class="rotate-1 lazur-bg">
-                    <small>2017-04-12 12:03</small>
-                    <h3><i class="fa fa-check"></i>Done</h3>
-                    <h4>Task name1</h4>
-                    <p>Description: first task </p>
-                    <p>Deadline: </p>
+        <div class="col-md-6">
+            <div class="box box-aqua">
+                <div class="box-header ui-sortable-handle" style="cursor: move;">
+                    {#<i class="ion ion-clipboard"></i>#}
+                    <div class="title">
+                        <h2 class="titletask">All your done tasks:</h2>
+                    </div>
 
                 </div>
-            </li>
-            <li>
-                <div class="rotate-2 red-bg">
-                    <small>2017-04-12 12:03</small>
-                    <h3><i class="fa fa-check"></i>Done</h3>
-                    <h4>Task name2</h4>
-                    <p>Description:second </p>
-                    <p>Deadline: </p>
+                <div class="box-body">
+                    <ul class="todo-list ui-sortable">
 
-                </div>
-            </li>
-            <li>
-                <div class="rotate-1 yellow-bg">
-                    <small>2017-04-12 12:03</small>
-                    <h3><i class="fa fa-check"></i>Done</h3>
-                    <h4>Task name3</h4>
-                    <p>Description: </p>
-                    <p>Deadline: </p>
+                            <li>
+                                <h2 class="done"><i class="fa fa-check"></i>Done</h2>
+                                <span class="text">Name : </span>
+                                <span class="desc">Description : </span>
+                                <span class="deadln">Deadline : </span><br>
 
+                                {#<form action="/LateList">#}
+                                {#<input type="submit" value="Late"/>#}
+                                {#</form>#}
+
+                                <button class="checkAll"><i class="fa fa-trash-o" style="font-size:16px"></i>
+                                    Delete
+                                </button>
+                                <br>
+                            </li><br>
+
+
+
+                    </ul>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
 </div>
+</body>
+{#<div class="container bootstrap snippet">#}
+    {#<div class="row">#}
+        {#<ul class="notes">#}
+            {#<li>#}
+                {#<div class="rotate-1 lazur-bg">#}
+                    {#<small>2017-04-12 12:03</small>#}
+                    {#<h3><i class="fa fa-check"></i>Done</h3>#}
+                    {#<h4>Task name1</h4>#}
+                    {#<p>Description: first task </p>#}
+                    {#<p>Deadline: </p>#}
+
+                {#</div>#}
+            {#</li>#}
+            {#<li>#}
+                {#<div class="rotate-2 red-bg">#}
+                    {#<small>2017-04-12 12:03</small>#}
+                    {#<h3><i class="fa fa-check"></i>Done</h3>#}
+                    {#<h4>Task name2</h4>#}
+                    {#<p>Description:second </p>#}
+                    {#<p>Deadline: </p>#}
+
+                {#</div>#}
+            {#</li>#}
+            {#<li>#}
+                {#<div class="rotate-1 yellow-bg">#}
+                    {#<small>2017-04-12 12:03</small>#}
+                    {#<h3><i class="fa fa-check"></i>Done</h3>#}
+                    {#<h4>Task name3</h4>#}
+                    {#<p>Description: </p>#}
+                    {#<p>Deadline: </p>#}
+
+                {#</div>#}
+            {#</li>#}
+        {#</ul>#}
+    {#</div>#}
+{#</div>#}
