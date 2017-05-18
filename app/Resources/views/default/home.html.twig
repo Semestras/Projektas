@@ -5,49 +5,52 @@
     <title>This is your homepage</title>
 </head>
 <body>
+<div class="background"></div>
 <form action="/create">
-    <input type="submit" value="Create a new task"/>
+    <input class="button" type="submit" value="Create a new task"/>
 </form>
-
 <form action="/DoneList">
-    <input type="submit" value="See done list"/>
+    <input class="button" type="submit" value="See done list"/>
 </form>
-
 <form action="/logout">
-    <input type="submit" value="Log me out"/>
+    <input class="button" type="submit" value="Log me out"/>
 </form>
-
-<h1>All your available tasks:</h1>
-
 <div class="container bootstrap snippet">
     <div class="row">
-        <ul class="notes">
-            {% for item in result %}
-                <li>
-
-                    <span class="text">Name : {{ item.name }}</span><br>
-                    <span class="text">Description : {{ item.description }}</span><br>
-                    <span class="deadln">Deadline : {{ item.duedate }}</span><br>
-
-                    <button id="checkAll"><i class="fa fa-exclamation"
-                                                                        style="font-size:16px"></i> Late
-                        </button>
-                    <button id="checkAll"><i class="fa fa-check" style="font-size:16px"></i>
-                            DONE
-                        </button>
-                    <button id="checkAll"><i class="fa fa-check" style="font-size:16px"></i>
-                        Delete
-                    </button>
-                    <br>
-
-                </li><br>
-
-            {% else %}
-                <h3> It seems you have no active tasks, create one now :)</h3>
-            {% endfor %}
-        </ul>
+        <div class="col-md-6">
+            <div class="box box-aqua">
+                <div class="box-header ui-sortable-handle" style="cursor: move;">
+                    <i class="ion ion-clipboard"></i>
+                    <div class="title">
+                        <h2 class="titlestyle">All your available tasks:</h2>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="todo-list ui-sortable">
+                        {% for item in result %}
+                            <li>
+                                <span class="text">Name : {{ item.name }}</span><br>
+                                <span class="desc">Description : {{ item.description }}</span><br>
+                                <span class="deadln">Deadline : {{ item.duedate }}</span><br>
+                                <button class="checkAll"><i class="fa fa-exclamation"
+                                                            style="font-size:16px"></i> Late
+                                </button>
+                                <button class="checkAll"><i class="fa fa-check" style="font-size:16px"></i>
+                                    DONE
+                                </button>
+                                <button class="checkAll"><i class="fa-trash-o" style="font-size:16px"></i>
+                                    Delete
+                                </button>
+                                <br>
+                            </li><br>
+                        {% else %}
+                            <h3> It seems you have no active tasks, create one now :)</h3>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
 </html>
-

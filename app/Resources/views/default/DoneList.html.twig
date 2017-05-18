@@ -1,22 +1,42 @@
-<link rel="stylesheet" href="{{ asset('css/todo.css') }}"/>
+<link rel="stylesheet" href="{{ asset('css/DoneList.css') }}"/>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<html>
 <head>
-    <title>Completed tasks</title>
+    <title>Done list</title>
 </head>
 <body>
-<h3>All your completed tasks:</h3>
+<div class="background"></div>
+<form action="/Split">
+    <input class="button" type="submit" value="Back to home page"/>
+</form>
 <div class="container bootstrap snippet">
     <div class="row">
-        <ul class="notes">
-            {% for item in result %}
-                <li>
-                    <span class="text">Name : {{ item.name }}</span><br>
-                    <span class="text">Description : {{ item.description }}</span><br>
-                    <span class="deadln">Deadline : {{ item.duedate }}</span><br>
-                </li><br>
-            {% else %}
-                <h3> It seems you have no completed tasks, maybe you should start working now? :)</h3>
-            {% endfor %}
-        </ul>
+        <div class="col-md-6">
+            <div class="box box-aqua">
+                <div class="box-header ui-sortable-handle" style="cursor: move;">
+                    <i class="ion ion-clipboard"></i>
+                    <div class="title">
+                        <h2 class="titlestyle">All your done tasks:</h2>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="todo-list ui-sortable">
+                        <li>
+                            <h2><i class="fa fa-check"></i>Done</h2>
+                            <span class="text">Name : </span><br>
+                            <span class="desc">Description : </span><br>
+                            <span class="deadln">Deadline : </span><br>
+                            <button class="checkAll"><i class="fa-trash-o" style="font-size:16px"></i>
+                                Delete
+                            </button>
+                            <br>
+                        </li>
+                        <br>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+</body>
+</html>

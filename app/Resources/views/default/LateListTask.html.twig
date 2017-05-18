@@ -4,25 +4,29 @@
     <title>Late tasks</title>
 </head>
 <body>
-<h3>You are currently late for these tasks:</h3>
-<div class="container bootstrap snippet">
-    <div class="row">
-        <ul class="notes">
-            {% for item in result %}
-            <li>
-                <span class="text">Name : {{ item.name }}</span><br>
-                <span class="text">Description : {{ item.description }}</span><br>
-                <span class="deadln">Deadline : {{ item.duedate }}</span><br>
-
-                <button id="checkAll"><i class="fa fa-check" style="font-size:16px"></i>
-                    DONE
-                </button>
-
-            </li><br>
-            {% else %}
-                <h3> Congratulations, you are not late for any tasks :)</h3>
-            {% endfor %}
-        </ul>
+<div class="allChart">
+    <div class="latetitle">
+        <h3 class="latetitlename">You are currently late for these tasks:</h3>
+    </div>
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <ul class="notes">
+                {% for item in result %}
+                    <li>
+                        <span class="text">Name : {{ item.name }}</span><br>
+                        <span class="desc">Description : {{ item.description }}</span><br>
+                        <span class="deadln">Deadline : {{ item.duedate }}</span><br>
+                        <button class="checkAll"><i class="fa fa-check" style="font-size:16px"></i>
+                            DONE
+                        </button>
+                    </li><br>
+                {% else %}
+                    <div class="notLate">
+                        <h3 class="notLatestyle"> Congratulations, you are not late for any tasks :)</h3>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>
-
+</body>
