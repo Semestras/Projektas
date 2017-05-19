@@ -31,7 +31,7 @@ class SplitController extends Controller
             'SELECT p
             FROM AppBundle:Task p
             WHERE p.userid = 0
-            AND p.state = 0
+            AND p.state = 1
             ORDER BY p.userid ASC'
         );
 

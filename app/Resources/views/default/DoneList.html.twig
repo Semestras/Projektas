@@ -21,17 +21,22 @@
                 </div>
                 <div class="box-body">
                     <ul class="todo-list ui-sortable">
-                        <li>
-                            <h2><i class="fa fa-check"></i>Done</h2>
-                            <span class="text">Name : </span><br>
-                            <span class="desc">Description : </span><br>
-                            <span class="deadln">Deadline : </span><br>
-                            <button class="checkAll"><i class="fa-trash-o" style="font-size:16px"></i>
-                                Delete
-                            </button>
+                        {% for item in result %}
+                            <li>
+                                <h2><i class="fa fa-check"></i>Done</h2>
+                                <span class="text">Name : {{ item.name }}</span><br>
+                                <span class="desc">Description : {{ item.description }}</span><br>
+                                <span class="deadln">Deadline : {{ item.duedate }}</span><br>
+                                <button class="checkAll"><i class="fa-trash-o" style="font-size:16px"></i>
+                                    Delete
+                                </button>
+                                <br>
+                            </li>
                             <br>
-                        </li>
-                        <br>
+                        {% else %}
+                            <h3 style="color: white"> It seems you didn't complete any tasks, go and finish one now
+                                :)</h3>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
