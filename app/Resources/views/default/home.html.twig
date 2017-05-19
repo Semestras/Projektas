@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/todo.css') }}"/>
+<link rel="stylesheet" href="{{ asset('css/todo.css') }}"/>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <html>
 <head>
@@ -15,9 +16,29 @@
 <form action="/logout">
     <input class="button" type="submit" value="Log me out"/>
 </form>
-<div class="container bootstrap snippet">
+<div class="allChart" style="float:right; width:50%;">
+    <div class="latetitle">
+        <h3 class="latetitlename">You are currently late for these tasks:</h3>
+    </div>
     <div class="row">
-        <div class="col-md-6">
+        <ul class="notes">
+            {% for item in result2 %}
+                <li>
+                    <span class="text">Name : {{ item.name }}</span><br>
+                    <span class="desc">Description : {{ item.description }}</span><br>
+                    <span class="deadln">Deadline : {{ item.duedate }}</span><br>
+                    <button class="checkAll"><i class="fa fa-check" style="font-size:16px"></i>
+                        DONE
+                    </button>
+                </li><br>
+            {% else %}
+                <h3 style="background: ghostwhite"> Congratulations, you are not late for any tasks :)</h3>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="container bootstrap snippet">
+    <div style="float:left; width:50%;">
             <div class="box box-aqua">
                 <div class="box-header ui-sortable-handle" style="cursor: move;">
                     <i class="ion ion-clipboard"></i>
@@ -27,30 +48,25 @@
                 </div>
                 <div class="box-body">
                     <ul class="todo-list ui-sortable">
-                        {% for item in result %}
+                        {% for item in result1 %}
                             <li>
                                 <span class="text">Name : {{ item.name }}</span><br>
                                 <span class="desc">Description : {{ item.description }}</span><br>
                                 <span class="deadln">Deadline : {{ item.duedate }}</span><br>
-                                <button class="checkAll"><i class="fa fa-exclamation"
-                                                            style="font-size:16px"></i> Late
-                                </button>
                                 <button class="checkAll"><i class="fa fa-check" style="font-size:16px"></i>
                                     DONE
-                                </button>
-                                <button class="checkAll"><i class="fa-trash-o" style="font-size:16px"></i>
-                                    Delete
                                 </button>
                                 <br>
                             </li><br>
                         {% else %}
-                            <h3> It seems you have no active tasks, create one now :)</h3>
+                            <h3 style="background: ghostwhite"> It seems you have no active tasks, create one now
+                                :)</h3>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
+
 </div>
 </body>
 </html>

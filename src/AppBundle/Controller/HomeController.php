@@ -13,40 +13,30 @@ class HomeController extends Controller
      */
     public function homeAllTasks() #visada_iskvieciama_funkcija
     {
-        /*
-         * norint atrinkti duomenu bazes irasus reikia gauti weba naudojancio userio id
-         * sita eilute gauna prisijungusi asmeni
-         */
+        $todaydate = date("l-jS-F");
         $user = $this->get('security.token_storage')->getToken()->getUser();
-
-        /*
-         * nesigilinau kam, bet reikalinga eilute, berods gauna viska is duombazes
-         */
         $em = $this->getDoctrine()->getManager();
-
-        /*
-         * cia atrenkami reikalingi taskai, yra keli budai, cia parasytas naudojant sql komandas
-         * p - naujas objektas, appbundle:task nurodo jo klase, kurios iesko duomenu bazej
-         * where nurodo pagal ka reikia rasti. siuo atveju pagal atskira parametra userid
-         * orderby, isrusiuoja, siuo atveju nebutina
-         * userid gaunamas is prisijungusio asmens panaudojant metoda
-         */
-        $query = $em->createQuery(
+        $query1 = $em->createQuery(
             'SELECT p
             FROM AppBundle:Task p
-            WHERE p.userid = 0
+            WHERE p.userid = :userid
             AND p.state = 0
             ORDER BY p.userid ASC'
-        );
+        )->setParameter('userid', $user->getId());
+        $query2 = $em->createQuery(
+            'SELECT p
+            FROM AppBundle:Task p
+            WHERE p.userid = :userid
+            AND p.state = 1
+            ORDER BY p.userid ASC'
+        )->setParameter('userid', $user->getId());
+        $latesql = $em->createQuery(
+            'UPDATE AppBundle:Task
+            SET state = 1
+            WHERE duedate < :todaydate')->setParameter('todaydate', $todaydate);
+        $tasks1 = $query1->getResult();
+        $tasks2 = $query2->getResult();
 
-        /*
-         * visus gautus rezultatus sudeda i masyva
-         */
-        $tasks = $query->getResult();
-
-        /*
-         * i spausdinimo forma nusiuncia duota masyva kuri isspausdina
-         */
-        return $this->render('default/home.html.twig', array('result' => $tasks));
+        return $this->render('default/home.html.twig', array('result1' => $tasks1, 'result2' => $tasks2));
     }
 }

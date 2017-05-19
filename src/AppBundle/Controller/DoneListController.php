@@ -15,10 +15,10 @@ class DoneListController extends Controller
         $query = $em->createQuery(
             'SELECT p
             FROM AppBundle:Task p
-            WHERE p.userid = 0
+            WHERE p.userid = :userid  
             AND p.state = 2
             ORDER BY p.userid ASC'
-        );
+        )->setParameter('userid', $user->getId());
         $tasks = $query->getResult();
         return $this->render('default/DoneList.html.twig', array('result' => $tasks));
     }

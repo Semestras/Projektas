@@ -19,7 +19,7 @@ class CreateTask extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('description', TextType::class)
-            ->add('duedate', TextType::class)
+            ->add('duedate', DateType::class)
             ->add('save', SubmitType::class)
 
         ;
